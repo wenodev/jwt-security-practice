@@ -32,9 +32,8 @@ public class SignInController {
 
         jwtTokenProvider.createToken(String.valueOf(user.getId()), user.getRoles());
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity(user, HttpStatus.OK);
     }
-
 
     @PostMapping("/signup")
     public ResponseEntity signUp(@RequestParam String uid, @RequestParam String password, @RequestParam String name){
@@ -51,7 +50,9 @@ public class SignInController {
                 .roles(Collections.singletonList("ROLE_USER"))
                 .build());
 
-        return new ResponseEntity(HttpStatus.OK);
+        User user = userRepository.findByUid(uid);
+
+        return new ResponseEntity(user, HttpStatus.OK);
     }
 
 
