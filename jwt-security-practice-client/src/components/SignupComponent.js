@@ -12,18 +12,15 @@ export default class SignupComponent extends Component {
             name: ''
         }
 
-
         this.changeIdHandler = this.changeIdHandler.bind(this);
         this.changePasswordHandler = this.changePasswordHandler.bind(this);
         this.changeNameHandler = this.changeNameHandler.bind(this);
         this.register = this.register.bind(this);
         this.cancel = this.cancel.bind(this);
-
     }
 
     changeIdHandler = (event) => {
         this.setState({ uid: event.target.value });
-        console.log(this.state.uid);
     }
 
     changePasswordHandler = (event) => {
@@ -36,7 +33,7 @@ export default class SignupComponent extends Component {
 
     register = () => {
         UserAuthService.signup(this.state.uid, this.state.password, this.state.name).then(res => {
-            this.props.history.push('/');
+            // this.props.history.push('/');
         })
     }
 
@@ -63,7 +60,6 @@ export default class SignupComponent extends Component {
                     <label> name: </label>
                     <input placeholder="name" name="name" value={this.state.name} onChange={this.changeNameHandler} />
                 </div>
-
 
                 <button onClick={this.register}>Save</button>
                 <button onClick={this.cancel} style={{ marginLeft: "10px" }}>Cancel</button>

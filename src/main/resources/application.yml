@@ -6,4 +6,4 @@ spring:
     hikari:
       jdbc-url: jdbc:h2:mem:testdb
   jwt:
-    secret: juwon@%&
+    secret: testJwtSecret@%&
