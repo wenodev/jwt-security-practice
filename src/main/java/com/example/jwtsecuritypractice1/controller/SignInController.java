@@ -23,13 +23,16 @@ public class SignInController {
     public ResponseEntity signin(@RequestParam String uid, @RequestParam String password) throws Exception {
 
         System.out.println("===signin===");
-        System.out.println(uid);
-        System.out.println(password);
+//        System.out.println(uid);
+//        System.out.println(password);
 
         User user = userRepository.findByUid(uid);
 
 //        jwtTokenProvider.createToken(String.valueOf(user.getId()), user.getRoles());
-//        System.out.println(jwtTokenProvider.createToken(String.valueOf(user.getId()), user.getRoles()));
+
+        String jwt = jwtTokenProvider.createToken(String.valueOf(user.getId()), user.getRoles());
+
+        System.out.println(jwtTokenProvider.createToken(String.valueOf(user.getId()), user.getRoles()));
 
         return new ResponseEntity(jwtTokenProvider.createToken(String.valueOf(user.getId()), user.getRoles()), HttpStatus.OK);
     }

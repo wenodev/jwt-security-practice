@@ -12,10 +12,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@AllArgsConstructor
+
 public class JwtAuthenticationFilter extends GenericFilterBean {
 
     private JwtTokenProvider jwtTokenProvider;
+
+    //Jwt Provider 주입
+    public JwtAuthenticationFilter(JwtTokenProvider jwtTokenProvider){
+        this.jwtTokenProvider = jwtTokenProvider;
+    }
+
+
 
     //Request로 들어오는 Jwt Token의 유효성을 검증(jwtTokenProvider.validateToken) 하는 filter를 filterChanin에 등록
     @Override

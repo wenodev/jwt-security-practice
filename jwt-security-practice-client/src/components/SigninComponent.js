@@ -32,7 +32,6 @@ export default class SigninComponent extends Component {
             console.log(res);
             console.log(res.data);
             localStorage.setItem("accessToken", res.data);
-
             // this.props.history.push('/');
         })
     }
